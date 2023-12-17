@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&P 500 App</title>
+    <link rel="stylesheet" href="/static/style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="/static/index.js"></script>
+</head>
+
+<body id="wrapper">
+
+ <header>
+    <div id="navbar">
+        <ul class="navbar-left">
+            <li><a href="main.html"><i class="fa-solid fa-house icon-left"></i></a></li>
+            <li><a href="docs.html"><i class="fa-solid fa-book icon-left"></i></a></li>
+            <li><a href="contact.asp"><i class="fa-solid fa-bars icon-left"></i></a></li>
+        </ul>
+        <div class="navbar-right">
+          <i class="fa-solid fa-arrow-trend-up icon-rightup"></i>
+          <span class="navbar-liveprice">
+            <p class="navbar-price">+(2.42%)</p>
+            <p class="navbar-time">Last updated: 9:41am EST</p>
+          </span>
+        </div> 
+    </div>
+    <div class="heading">
+      <span class="heading-top"><p class="headingtop-text">S&P 500 Analyzer</p></span>
+      <span class="heading-bottom"><p class="headingbottom-text">Analyze all 11 sections, updated daily</p></span>
+    </div>
+ </header>
+<main>
+ {% for sector_name in sector_names %}
+    <div class="sector">
+      <h1 class="sector-heading">{{ sector_name }}</h1>
+      <div class="pages">
+        <div class="page" id="page1_{{ loop.index0 }}">Graph and Performance for {{ sector_name }}
+
+        </div>
+        <div class="page" id="page2_{{ loop.index0 }}" style="display: none;">
+          <h3 style="text-align: center;">Information Table for {{ sector_name }}</h3>
+          <table class="table-info">
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Stock</th>
+                <th>Market Cap</th>
+                <th>Daily Volume</th>
+                <th>Weekly Volume</th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for stock in sector_data[sector_name] %}
+            <tr>
+              <td>{{ stock.tickers }}</td>
+              <td>{{ stock.company }}</td>
+              <td>{{ stock.market_cap }}</td>
+              <td>{{ stock.monthly_volume }}</td>
+              <td>{{ stock.weekly_volume }}</td>
+            </tr>
+          {% endfor %}
+            </tbody>
+         </table>
+        </div>
+      </div>
+      <button class="prev-btn" onclick="changePage('{{ loop.index0 }}', 'prev')">Previous</button>
+      <button class="next-btn" onclick="changePage('{{ loop.index0 }}', 'next')">Next</button>
+    </div>
+  {% endfor %}
+</main>
+
+</body>
+</html> 
