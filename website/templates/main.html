@@ -48,17 +48,23 @@
                 <th>Ticker</th>
                 <th>Stock</th>
                 <th>Market Cap</th>
-                <th>Daily Volume</th>
+                <th>Date</th>
+                <th>Weekly Open</th>
+                <th>Weekly Close</th>
+                <th>Weekly Difference</th>
                 <th>Weekly Volume</th>
               </tr>
             </thead>
             <tbody>
           {% for stock in sector_data[sector_name] %}
             <tr>
-              <td>{{ stock.tickers }}</td>
+              <td>{{ stock.ticker }}</td>
               <td>{{ stock.company }}</td>
               <td>{{ stock.market_cap }}</td>
-              <td>{{ stock.monthly_volume }}</td>
+              <td>{{ stock.date }}</td>
+              <td>{{ stock.weekly_open }}</td>
+              <td>{{ stock.weekly_close }}</td>
+              <td>{{ stock.weekly_difference }}</td>
               <td>{{ stock.weekly_volume }}</td>
             </tr>
           {% endfor %}

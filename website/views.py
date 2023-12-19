@@ -9,7 +9,7 @@ def main():
     sector_data = {}
 
     for sector in sector_names:
-        companies = SP500_Columns_Key.query.filter_by(sectors=sector).all()
+        companies = SP500_Columns_Key.query.filter_by(sector=sector).all()
         sector_data[sector] = companies
         
     return render_template("main.html", sector_names=sector_names, sector_data=sector_data)
