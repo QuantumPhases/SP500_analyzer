@@ -11,5 +11,5 @@ class SP500_Columns_Key(db.Model):
     date = db.Column(db.Date)
     weekly_open = db.Column(db.Integer)
     weekly_close = db.Column(db.Integer)
-    weekly_difference = db.Column(db.Integer)
+    weekly_percentage = db.Column(db.Integer)
     weekly_volume = db.Column(db.Integer)
