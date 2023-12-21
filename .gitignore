@@ -3,4 +3,4 @@ fp-venv/
 
 
 # Ignore database file
-.instance
+instance/
