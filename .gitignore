@@ -1,8 +1,6 @@
 # Ignore virtual environment
-venv/
-env/
-.DS_Store
-
-# FP
 fp-venv/
-text.txt/
+
+
+# Ignore database file
+.instance

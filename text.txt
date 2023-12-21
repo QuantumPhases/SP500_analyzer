@@ -1,5 +1,0 @@
-sass website/static/style.scss website/static/style.css
-
-red arrow - <i class="fa-solid fa-arrow-trend-down icon-rightdown"></i>
-
-source /Users/fpfasho/Projects/sp500-app/fp-venv/bin/activate
