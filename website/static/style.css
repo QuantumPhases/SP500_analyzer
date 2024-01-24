@@ -2,54 +2,92 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
-/* Styles for screens with a minimum width of 320px and wider */
-@media only screen and (min-width: 320px) {
-  #wrapper {
-    min-height: 100vh;
-    background-color: #50C878;
+body {
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 320px) {
+  li {
+    list-style-type: none;
   }
-  #navbar {
-    height: 50px;
-    display: flex;
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
-  #navbar li {
-    list-style: none;
+  #docs-main {
+    font-family: "Poppins", sans-serif;
+    color: #faf5e4;
   }
-  .navbar-liveprice {
+  #docs-main h1 {
+    font-size: 2.25rem;
+    padding: 4px 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1s ease-out forwards;
+  }
+  #docs-header {
+    background-color: #2c786c;
+  }
+  #docs-header p {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2;
+  }
+  .docs-section {
+    background-color: #004445;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
-  .navbar-liveprice .navbar-price {
-    font-size: 20px;
+  .docs-section span {
+    font-size: 2.5rem;
+    color: #f8b400;
   }
-  .navbar-liveprice .navbar-time {
-    font-size: 12px;
+  .docs-section strong {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.25rem;
+    color: #f8b400;
   }
-  /* NAVBAR ABOVE */
-  /* SECTOR BELOW */
+  .docs-section #griddy {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 50px;
+    row-gap: 25px;
+  }
+  .docs-section #griddy > div {
+    border: 1px #faf5e4 solid;
+    height: 200px;
+    margin: 0 20px;
+  }
 }
-@media only screen and (min-width: 320px) and (max-width: 400px) {
-  .navbar-liveprice .navbar-time {
-    font-size: 10px;
-  }
-}
+/* Styles for screens with a minimum width of 320px and wider */
 @media only screen and (min-width: 320px) {
+  nav {
+    background: #f8b400;
+    border-bottom: 1px #faf5e4 solid;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Poppins", sans-serif;
+  }
+  nav li {
+    list-style: none;
+  }
   .navbar-left {
-    flex-basis: 50%;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
+    margin-left: 20px;
   }
   .navbar-right {
-    flex-basis: 50%;
     display: flex;
-    align-items: center;
-    gap: 30px;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
   }
   .icon-left {
     color: black;
@@ -59,31 +97,31 @@
     color: green;
     font-size: 35px;
   }
+  /* NAVBAR ABOVE */
   .heading {
-    width: 100%;
-    height: 275px;
+    font-family: "Poppins", sans-serif;
+    background-color: #2c786c;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 12px;
     align-items: center;
+    justify-content: center;
   }
-  .heading-top, .heading-bottom {
-    width: 375px;
-  }
-  .heading-top .headingtop-text, .heading-bottom .headingtop-text {
-    text-align: center;
+  .heading .heading-top {
     font-weight: bold;
-    font-size: 60px;
+    font-size: 2.5rem;
+    color: #faf5e4;
   }
-  .heading-top .headingbottom-text, .heading-bottom .headingbottom-text {
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-    color: purple;
-  }
+  /* SECTOR BELOW */
   .sector {
+    background: #004445;
     height: 850px;
-    border: 1px solid white;
+    border: 1px solid #faf5e4;
+  }
+  .sector-heading {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.75rem;
+    color: #faf5e4;
   }
   .pages {
     display: flex;
@@ -96,31 +134,55 @@
     padding: 20px 0;
     overflow: auto;
   }
-  .table-info {
+  .page h2 {
+    color: #faf5e4;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper .dataTables_filter,
+  .dataTables_wrapper .dataTables_info,
+  .dataTables_wrapper .dataTables_processing,
+  .dataTables_wrapper .dataTables_paginate {
+    color: #faf5e4;
+  }
+  table.dataTable {
+    background-color: #faf5e4;
+    filter: brightness(0.95);
+    margin: 0 auto;
+    clear: both;
     border-collapse: collapse;
-    margin: 10px auto;
-    font-size: 14px;
+    border-spacing: 0;
+    border: 3px solid black;
+  }
+  table.dataTable td {
     border: 1px solid black;
-    width: 100%;
   }
-  .table-info thead th {
-    background-color: white;
-    color: black;
-    text-align: left;
-    font-weight: bold;
-    padding: 8px;
+  table.dataTable.no-footer {
+    border-bottom: 3px solid black;
   }
-  .table-info td {
-    border: 0.5px solid black;
-    padding: 10px;
+  .dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: 0.25em;
+    color: 1px solid #faf5e4;
   }
-  .prev-btn, .next-btn {
-    margin-top: 10px;
+  .btn {
+    background-color: #faf5e4;
+    box-shadow: black 4px 4px 0 0;
+    margin: 10px 10px 0 10px;
     cursor: pointer;
+    height: 25px;
+    width: 75px;
+    border-radius: 12px;
+    border: 1px black solid;
   }
-  .sector-heading {
-    font-weight: bold;
-    font-size: 24px;
+  .btn:hover {
+    color: #faf5e4;
+    background-color: #2c786c;
+    filter: brightness(1.25);
   }
 }
 @media (min-width: 481px) { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }

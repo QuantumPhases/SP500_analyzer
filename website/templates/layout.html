@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S&P 500 App</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="/static/style.css"> 
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+        <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+        <script type="text/javascript">
+            function initViz(sectorIndex, tableauUrl) {
+                var containerDiv = document.getElementById("vizContainer_" + sectorIndex);
+                var viz = new tableau.Viz(containerDiv, tableauUrl, {hideTabs: true});
+            }
+        </script>
+    </head>
+
+<body>
+    <nav>
+        <ul class="navbar-left">
+            <li><a href="{{ url_for('views.main') }}"><i class="fa-solid fa-house icon-left"></i></a></li>
+            <li><a href="{{ url_for('views.docs') }}"><i class="fa-solid fa-book icon-left"></i></a></li>
+        </ul>
+        <div class="navbar-right">
+            <span id="vooprice">VOO Price: Loading...</span>
+            <span id="voodate">Last Updated: Loading...</span>
+        </div>        
+    </nav> 
+    {% block body %}{% endblock %}
+    <footer>
+      
+    </footer>
+    <script src="/static/index.js"></script>
+</body>
+
+</html> 

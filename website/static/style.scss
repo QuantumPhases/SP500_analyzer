@@ -1,56 +1,52 @@
+$first-color: #f8b400;
+$second-color: #faf5e4;
+$third-color: #2c786c;
+$fourth-color: #004445;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
   }
 
-  @mixin navbarSection{
-        flex-basis: 50%;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-  }
+  @mixin colorBrighter($color, $x) {
+    color: $color;
+    filter: brightness($x);
+  }  
+
+
+  body {
+    min-height: 100vh;
+}
+
+@import "./docs";
 
 /* Styles for screens with a minimum width of 320px and wider */
 @media only screen and (min-width: 320px) {
-    #wrapper {
-        min-height: 100vh;
-        background-color: #50C878;
-    }
 
-    #navbar {
-        height: 50px;
+    nav {
+        background: $first-color;
+        border-bottom: 1px $second-color solid;
         display: flex;
+        justify-content: space-between;
+        font-family: "Poppins", sans-serif;
         li {
             list-style: none;
         }
     }
 
-    .navbar-liveprice {
-        display: flex;
-        flex-direction: column;
-        .navbar-price {
-            font-size: 20px;
-        }
-        .navbar-time {
-            font-size: 12px;
-        }
-        @media (max-width: 400px) {
-            .navbar-time {
-                font-size: 10px;
-            }
-        }
-    }
-
     .navbar-left {
-        @include navbarSection;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-left: 20px;
     }
 
     .navbar-right {
-        @include navbarSection;
-        justify-content: center;
-        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 20px;
     }
 
     .icon-left {
@@ -66,34 +62,32 @@
     /* NAVBAR ABOVE */
 
     .heading {
-        width: 100%;
-        height: 275px;
+        font-family: "Poppins", sans-serif;
+        background-color: $third-color;
+        text-align: center;
         display: flex;
         flex-direction: column;
-        gap: 12px;
         align-items: center;
-    }
-
-    .heading-top, .heading-bottom{
-        width: 375px;
-        .headingtop-text{
-            text-align: center;
+        justify-content: center;
+        .heading-top {
             font-weight: bold;
-            font-size: 60px;
-        }
-        .headingbottom-text{
-            width: 100%;
-            font-size: 20px;
-            font-weight: bold;
-            color: purple;
+            font-size: 2.5rem;
+            color: #faf5e4;
         }
     }
 
     /* SECTOR BELOW */
     
     .sector{
+        background: $fourth-color;
         height: 850px;
-        border: 1px solid white;
+        border: 1px solid $second-color;
+    }
+
+    .sector-heading{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 1.75rem;
+        color: $second-color;
     }
 
     .pages {
@@ -107,37 +101,62 @@
     width: 95%;
     padding: 20px 0;
     overflow: auto;
+    h2 {
+        color: $second-color;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: lighter;
+    } 
     }
-    
-    .table-info {
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+    color: $second-color;
+    }
+
+    table.dataTable {
+        background-color: $second-color;
+        filter: brightness(0.95);
+        margin: 0 auto;
+        clear: both;
         border-collapse: collapse;
-        margin: 10px auto;
-        font-size: 14px;
+        border-spacing: 0;
+        border: 3px solid black;
+      }
+
+    table.dataTable td {
         border: 1px solid black;
-        width: 100%;
     }
 
-    .table-info thead th {
-        background-color: white;
-        color: black;
-        text-align: left;
-        font-weight: bold;
-        padding: 8px;
+    table.dataTable.no-footer {
+        border-bottom: 3px solid black;
     }
 
-    .table-info td {
-        border: 0.5px solid black;
-        padding: 10px;
+    .dataTables_wrapper .dataTables_paginate {
+        float: right;
+        text-align: right;
+        padding-top: .25em;
+        color: 1px solid $second-color;
     }
 
-    .prev-btn, .next-btn {
-    margin-top: 10px;
+    .btn {
+    background-color: $second-color;
+    box-shadow: black 4px 4px 0 0;
+    margin: 10px 10px 0 10px;
     cursor: pointer;
+    height: 25px;
+    width: 75px;
+    border-radius: 12px;
+    border: 1px black solid;
     }
-
-    .sector-heading{
-        font-weight: bold;
-        font-size: 24px;
+    .btn:hover{
+        color: $second-color;
+        background-color: $third-color;
+        filter: brightness(1.25);
     }
 }  
 

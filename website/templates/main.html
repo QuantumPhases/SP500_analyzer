@@ -1,48 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&P 500 App</title>
-    <link rel="stylesheet" href="/static/style.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <script src="/static/index.js"></script>
-</head>
+{% extends "layout.html" %}
 
-<body id="wrapper">
+{% block title %}S&P 500 Sector Analyzer{% endblock %}
 
- <header>
-    <div id="navbar">
-        <ul class="navbar-left">
-            <li><a href="main.html"><i class="fa-solid fa-house icon-left"></i></a></li>
-            <li><a href="docs.html"><i class="fa-solid fa-book icon-left"></i></a></li>
-            <li><a href="contact.asp"><i class="fa-solid fa-bars icon-left"></i></a></li>
-        </ul>
-        <div class="navbar-right">
-          <i class="fa-solid fa-arrow-trend-up icon-rightup"></i>
-          <span class="navbar-liveprice">
-            <p class="navbar-price">+(2.42%)</p>
-            <p class="navbar-time">Last updated: 9:41am EST</p>
-          </span>
-        </div> 
-    </div>
+{% block body %}
+  <main>
     <div class="heading">
-      <span class="heading-top"><p class="headingtop-text">S&P 500 Analyzer</p></span>
-      <span class="heading-bottom"><p class="headingbottom-text">Analyze all 11 sections, updated daily</p></span>
+      <p class="heading-top">S&P 500 <br> Sector Analyzer</p>
+      <span class="heading-bottom">Analyze all 11 sections, updated daily</span>
     </div>
- </header>
-<main>
- {% for sector_name in sector_names %}
+    {% for sector_name in sector_names %}
     <div class="sector">
       <h1 class="sector-heading">{{ sector_name }}</h1>
+      <button class="btn" onclick="changePage('{{ loop.index0 }}', 'graph')">Graph</button>
+      <button class="btn" onclick="changePage('{{ loop.index0 }}', 'table')">Table</button>
+      <button class="btn" onclick="changePage('{{ loop.index0 }}', 'map')"><i class="fa-solid fa-map-location-dot"></i></button>
       <div class="pages">
-        <div class="page" id="page1_{{ loop.index0 }}">Graph and Performance for {{ sector_name }}
-
+        <div class="page" id="page1_{{ loop.index0 }}"><h2>Graph and Performance for {{ sector_name }}</h2> 
+          <div id="vizContainer_{{ loop.index0 }}" style="width:100%; height:700px;"></div>
         </div>
         <div class="page" id="page2_{{ loop.index0 }}" style="display: none;">
-          <h3 style="text-align: center;">Information Table for {{ sector_name }}</h3>
-          <table class="table-info">
+          <h2>Information Table for {{ sector_name }}</h2>
+          <table class="hover" style="width:100%">
             <thead>
               <tr>
                 <th>Ticker</th>
@@ -71,12 +49,35 @@
             </tbody>
          </table>
         </div>
-      </div>
-      <button class="prev-btn" onclick="changePage('{{ loop.index0 }}', 'prev')">Previous</button>
-      <button class="next-btn" onclick="changePage('{{ loop.index0 }}', 'next')">Next</button>
-    </div>
-  {% endfor %}
-</main>
+        <div class="page" id="page3_{{ loop.index0 }}" style="display: none;">
+          <h2>HQ Locations for {{ sector_name }}</h2> 
 
-</body>
-</html> 
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+      var tableauUrls = [
+          "https://public.tableau.com/views/SP500Charts/CommunicationServicesDifference",
+          "https://public.tableau.com/views/SP500Charts/ConsumerDiscretionaryDifference",
+          "https://public.tableau.com/views/SP500Charts/ConsumerStaplesDifference",
+          "https://public.tableau.com/views/SP500Charts/EnergyDifference",
+          "https://public.tableau.com/views/SP500Charts/FinancialsDifference",
+          "https://public.tableau.com/views/SP500Charts/HealthCareDifference",
+          "https://public.tableau.com/views/SP500Charts/IndustrialsDifference",
+          "https://public.tableau.com/views/SP500Charts/InformationTechnologyDifference",
+          "https://public.tableau.com/views/SP500Charts/MaterialsDifference",
+          "https://public.tableau.com/views/SP500Charts/RealEstateDifference",
+          "https://public.tableau.com/views/SP500Charts/UtilitiesDifference",
+     ];
+  for (var i = 0; i < tableauUrls.length; i++) {
+      initViz(i, tableauUrls[i]);
+  }
+});
+  </script>
+    <script type="text/javascript">
+      initViz('{{ loop.index0 }}', '{{ sector_name }}');
+    </script>
+  {% endfor %}
+  </main>
+{% endblock %}

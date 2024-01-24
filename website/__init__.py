@@ -12,7 +12,7 @@ def create_app():
     db.init_app(app)
 
     from .views import views
-    from .model import SP500_Columns_Key
+    from .model import SP500_Realtime_Data
 
     create_database(app)
 

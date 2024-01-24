@@ -1,0 +1,61 @@
+@media screen and (min-width: 320px) {
+    li {
+        list-style-type: none;
+    }
+
+    @keyframes slideIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    
+    #docs-main{
+        font-family: "Poppins", sans-serif;
+        color: $second-color;
+        h1 {
+            font-size: 2.25rem;
+            padding: 4px 0;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideIn 1s ease-out forwards;
+        }
+    }
+
+    #docs-header{
+        background-color: $third-color;
+        p {
+            font-size: 1rem;
+            text-align: center;
+            line-height: 2;
+        }
+    }
+
+    .docs-section {
+        background-color: $fourth-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span {
+            font-size: 2.5rem;
+            color: $first-color
+        }
+        strong {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.25rem;
+            color: $first-color;
+        }
+        #griddy {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            column-gap: 50px;
+            row-gap: 25px;
+        }
+        #griddy > div {
+            border: 1px $second-color solid;
+            height: 200px;
+            margin: 0 20px;
+        }
+    }
+}

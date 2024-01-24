@@ -1,6 +1,5 @@
 # Ignore virtual environment
 fp-venv/
 
-
 # Ignore database file
 instance/
